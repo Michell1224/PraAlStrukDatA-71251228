@@ -38,7 +38,7 @@ def merge(kiri, kanan):
     i = 0 
     j = 0
     while i<len(kiri)and j<len(kanan):
-        if kiri[i]["rata-rata"]<kanan[j]["rata-rata"]:
+        if kiri[i]["rata-rata"]>kanan[j]["rata-rata"]:
             hasil.append(kiri[i])
             i+=1
         else:
@@ -58,7 +58,14 @@ keseluruhan = total // len(mahasiswa)
 
 # Mengurutkan mahasiswa menggunakan Merge Sort
 mahasiswa_urut = merge_sort(mahasiswa)
+atas = []
+bawah = []
 
+for mhs in mahasiswa_urut:
+    if mhs["rata-rata"] >= keseluruhan:
+        atas.append(mhs)
+    else:
+        bawah.append(mhs)
 
 # Menampilkan hasil rata-rata keseluruhan
 
@@ -68,9 +75,9 @@ print("\n=== DI ATAS / SAMA DENGAN RATA-RATA ===")
 # Tampilkan List di atas / sama dengan rata-rata
 num = 1
 for mhs in mahasiswa_urut:
-    if mhs["rata-rata"] <= keseluruhan:
+    if mhs["rata-rata"]>= keseluruhan:
         print(num, ".", mhs["nama"], "- Nilai:", mhs["nilai"], "- rata-rata:", mhs["rata-rata"])
-        num += 1
+        num +=1
         
 
 
